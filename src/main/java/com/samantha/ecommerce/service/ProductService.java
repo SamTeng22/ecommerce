@@ -1,6 +1,5 @@
 package com.samantha.ecommerce.service;
 
-import com.samantha.ecommerce.dto.CategoryDTO;
 import com.samantha.ecommerce.dto.ProductDTO;
 import com.samantha.ecommerce.model.Category;
 import com.samantha.ecommerce.model.Product;
@@ -23,7 +22,7 @@ public class ProductService {
 
     public ProductDTO getProductById(Long id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not find with id" + id));
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
         return toDTO(product);
     }
 
@@ -34,7 +33,7 @@ public class ProductService {
 
     public ProductDTO updateProduct(Long id, ProductDTO dto) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not find with id" + id));
+                .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
