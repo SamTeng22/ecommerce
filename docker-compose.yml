@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ecommerce_db
+    environment:
+      POSTGRES_DB: ecommerce_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: EverythingBlack2722
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: ecommerce_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecommerce_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: EverythingBlack2722
+      JWT_SECRET: 85d9ffc489f0eec7e26d8cb6fb8c4af7ec1c78f800787d09e92e4626710e1937
+      JWT_EXPIRATION: 86400000
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
