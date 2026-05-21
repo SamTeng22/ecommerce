@@ -2,6 +2,11 @@
 
 A Spring Boot ecommerce backend application with authentication, products, cart, and order management.
 
+## Live Demo
+
+API Base URL: `https://ecommerce-production-xxxx.up.railway.app`
+Swagger UI: `https://ecommerce-production-xxxx.up.railway.app/swagger-ui/index.html`
+
 ## Features
 
 - User authentication with JWT
@@ -57,6 +62,23 @@ mvn spring-boot:run
 
 ```bash
 mvn test
+```
+
+## Running with Docker
+
+Make sure Docker Desktop is running, then:
+
+```bash
+docker-compose up --build
+```
+
+The app will be available at `http://localhost:8080`
+API docs at `http://localhost:8080/swagger-ui/index.html`
+
+To stop:
+
+```bash
+docker-compose down
 ```
 
 ### API Documentation
