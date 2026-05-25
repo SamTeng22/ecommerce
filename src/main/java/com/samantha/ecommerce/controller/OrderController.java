@@ -40,6 +40,12 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrderById(orderId));
     }
 
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<OrderDTO>> getAllOrders() {
+        return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
     @PutMapping("/{orderId}/status")
     @Operation(summary = "Update an order status", description = "Only by Admin")
     @PreAuthorize("hasRole('ADMIN')")
