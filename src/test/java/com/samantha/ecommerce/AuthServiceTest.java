@@ -18,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -44,7 +46,7 @@ public class AuthServiceTest {
 
         when(userRepository.findByEmail(request.getEmail())).thenReturn(Optional.empty());
         when(passwordEncoder.encode(anyString())).thenReturn("hashedpassword");
-        when(jwtUtil.generateToken(anyString())).thenReturn("mock-jwt-token");
+        when(jwtUtil.generateToken(anyString(), "ADMIN")).thenReturn("mock-jwt-token", "ADMIN");
         when(userRepository.save(any(User.class))).thenAnswer(i -> i.getArgument(0));
 
         AuthResponse response = authService.register(request);
