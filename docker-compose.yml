@@ -6,8 +6,8 @@ services:
     container_name: ecommerce_db
     environment:
       POSTGRES_DB: ecommerce_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: EverythingBlack2722
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     ports:
       - "5433:5432"
     volumes:
@@ -20,10 +20,13 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecommerce_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: EverythingBlack2722
-      JWT_SECRET: 85d9ffc489f0eec7e26d8cb6fb8c4af7ec1c78f800787d09e92e4626710e1937
-      JWT_EXPIRATION: 86400000
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
     depends_on:
       - postgres
 

@@ -9,12 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final CloudinaryService cloudinaryService;
 
     public Page<ProductDTO> getAllProducts(Pageable pageable) {
         return productRepository.findAll(pageable).map(this::toDTO);
@@ -43,11 +45,22 @@ public class ProductService {
                     .orElseThrow(() -> new RuntimeException("Category not found"));
             product.setCategory(category);
         }
+        if (dto.getImageUrl() != null) {
+            product.setImageUrl(dto.getImageUrl());
+        }
         return toDTO(productRepository.save(product));
     }
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public ProductDTO uploadProductImage(Long id, MultipartFile file) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        String imageUrl = cloudinaryService.uploadImage(file);
+        product.setImageUrl(imageUrl);
+        return toDTO(productRepository.save(product));
     }
 
     private ProductDTO toDTO(Product product) {
@@ -61,6 +74,7 @@ public class ProductService {
             dto.setCategoryId(product.getCategory().getId());
             dto.setCategoryName(product.getCategory().getName());
         }
+        dto.setImageUrl(product.getImageUrl());
         return dto;
     }
 
@@ -75,6 +89,7 @@ public class ProductService {
                     .orElseThrow(() -> new RuntimeException("Category not found"));
             product.setCategory(category);
         }
+        product.setImageUrl(dto.getImageUrl());
         return product;
     }
 
