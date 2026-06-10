@@ -1,0 +1,28 @@
+$kind: http-request
+name: POST Login
+url: "{{base_url}}/api/auth/login"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"email\": \"doctor2@test.com\",\r
+
+    \  \"password\": \"assword123\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const res = pm.response.json();\r
+
+      if (res.role === \"PATIENT\") {\r
+
+      \    pm.environment.set(\"patient_token\", res.token);\r
+
+      } else if (res.role === \"DOCTOR\") {\r
+
+      \    pm.environment.set(\"doctor_token\", res.token);\r
+
+      }"
+    language: text/javascript
+order: 2733

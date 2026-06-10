@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:8080/api/consultations
+method: POST
+headers:
+  Authorization: Bearer {{patient_token}}
+body:
+  type: json
+  content: "{\r
+
+    \  \"timeSlotId\": \"c0e5529c-b86f-460e-a3d5-86ea86d1cbe3\"\r
+
+    }"
+order: 3811956556207786

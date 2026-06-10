@@ -1,0 +1,7 @@
+$kind: http-request
+name: GET doctor with specialization
+url: "{{base_url}}/api/doctors?specialization=cardiology"
+method: GET
+queryParams:
+  specialization: cardiology
+order: 958298394070181

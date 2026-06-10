@@ -1,0 +1,16 @@
+$kind: http-request
+name: PUT profile
+url: "{{base_url}}/api/doctors/me/profile"
+method: PUT
+headers:
+  Authorization: Bearer {{doctor_token}}
+body:
+  type: json
+  content: "{\r
+
+    \  \"firstName\": \"John\",\r
+
+    \  \"lastName\": \"Smith\"\r
+
+    }"
+order: 1355

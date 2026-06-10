@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{base_url}}/api/doctors/me"
+method: GET
+headers:
+  Authorization: Bearer {{doctor_token}}
+order: 1134529749191600

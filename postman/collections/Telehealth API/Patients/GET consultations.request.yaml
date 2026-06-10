@@ -1,0 +1,7 @@
+$kind: http-request
+name: GET consultations
+url: http://localhost:8080/api/consultations/me
+method: GET
+headers:
+  Authorization: Bearer {{patient_token}}
+order: 4111573598859974

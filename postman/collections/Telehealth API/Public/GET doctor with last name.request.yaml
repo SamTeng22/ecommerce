@@ -1,0 +1,7 @@
+$kind: http-request
+name: GET doctor with last name
+url: "{{base_url}}/api/doctors?name=smith"
+method: GET
+queryParams:
+  name: smith
+order: 4338983107689255

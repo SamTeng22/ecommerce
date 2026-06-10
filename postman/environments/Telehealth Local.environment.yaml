@@ -1,0 +1,8 @@
+name: Telehealth Local
+values:
+  - key: base_url
+    value: ''
+  - key: patient_token
+    value: ''
+  - key: doctor_token
+    value: ''

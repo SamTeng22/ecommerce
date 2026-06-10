@@ -1,0 +1,7 @@
+$kind: http-request
+name: GET self with Patient token
+url: "{{base_url}}/api/doctors/me"
+method: GET
+headers:
+  Authorization: Bearer {{patient_token}}
+order: 3000

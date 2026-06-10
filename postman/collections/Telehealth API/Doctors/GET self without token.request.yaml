@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET self without token
+url: "{{base_url}}/api/doctors/me"
+method: GET
+order: 4000

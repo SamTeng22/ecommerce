@@ -1,0 +1,30 @@
+$kind: http-request
+name: POST Register
+url: "{{base_url}}/api/auth/register"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"email\": \"patient2@test.com\",\r
+
+    \  \"password\": \"Password123!\",\r
+
+    \  \"role\": \"PATIENT\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const res = pm.response.json();\r
+
+      if (res.role === \"PATIENT\") {\r
+
+      \    pm.environment.set(\"patient_token\", res.token);\r
+
+      } else if (res.role === \"DOCTOR\") {\r
+
+      \    pm.environment.set(\"doctor_token\", res.token);\r
+
+      }"
+    language: text/javascript
+order: 3000

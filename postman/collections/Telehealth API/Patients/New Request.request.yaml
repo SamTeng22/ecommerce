@@ -1,0 +1,7 @@
+$kind: http-request
+name: New Request
+url: http://localhost:8080/api/consultations/c0e5529c-b86f-460e-a3d5-86ea86d1cbe3
+method: DELETE
+headers:
+  Authorization: Bearer {{patient_token}}
+order: 4133252776659011

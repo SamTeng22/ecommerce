@@ -1,0 +1,9 @@
+$kind: http-request
+name: GET doctor with page and size
+url: "{{base_url}}/api/doctors?page=0&size=5&sort=lastName"
+method: GET
+queryParams:
+  page: "0"
+  size: "5"
+  sort: lastName
+order: 1779860656289

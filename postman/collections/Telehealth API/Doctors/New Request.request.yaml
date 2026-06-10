@@ -1,0 +1,7 @@
+$kind: http-request
+name: New Request
+url: "{{base_url}}/api/doctors/me/consultations"
+method: GET
+headers:
+  Authorization: Bearer {{doctor_token}}
+order: 4425638325952119

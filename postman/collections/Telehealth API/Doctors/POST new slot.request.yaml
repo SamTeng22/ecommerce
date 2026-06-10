@@ -1,0 +1,18 @@
+$kind: http-request
+name: POST new slot
+url: http://localhost:8080/api/doctors/me/slots
+method: POST
+headers:
+  Authorization: Bearer {{doctor_token}}
+body:
+  type: json
+  content: "{\r
+
+    \  \"date\": \"2026-06-01\",\r
+
+    \  \"startTime\": \"09:00\",\r
+
+    \  \"endTime\": \"10:30\"\r
+
+    }"
+order: 2086240756682663

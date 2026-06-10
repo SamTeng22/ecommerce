@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET all doctors
+url: "{{base_url}}/api/doctors"
+method: GET
+order: 4290404095278314

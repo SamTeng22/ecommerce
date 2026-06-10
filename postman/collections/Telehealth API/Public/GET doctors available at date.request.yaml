@@ -1,0 +1,6 @@
+$kind: http-request
+url: http://localhost:8080/api/doctors/1/availability?date=2026-06-01
+method: GET
+queryParams:
+  date: 2026-06-01
+order: 4399328491735643
