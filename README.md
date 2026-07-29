@@ -4,8 +4,8 @@ A Spring Boot ecommerce backend application with authentication, products, cart,
 
 ## Live Demo
 
-API Base URL: `https://ecommerce-production-xxxx.up.railway.app`
-Swagger UI: `https://ecommerce-production-xxxx.up.railway.app/swagger-ui/index.html`
+Demo URL: `https://ecommerce-frontend-one-lime.vercel.app/`
+Swagger UI: `https://ecommerce-production-fa2b.up.railway.app/swagger-ui/index.html#/Products/getProductById`
 
 ## Features
 
